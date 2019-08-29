@@ -5,7 +5,7 @@ Installing Nvidia Drivers, Installing CUDA drivers with cuDNN on a Ubuntu machin
 ## First things first (Check your nVidia Device)
 
 If you know which nVidia graphics card you have in your machine you can continue to step 2, otherwise, you can use the following script to check whether you have an nVidia graphics card and its type.
-```
+```shell_session
 $ lspci | grep -i nvidia
 ```
 ### Step 1: 
@@ -13,18 +13,18 @@ $ lspci | grep -i nvidia
   - In my case I am using an nVidia Tesla V100, So, my preferred version is 410 or higher.
 ### Step 2 (Installing nVidia Drivers):
   - Open terminal and enter :
-    ```
+    ```shell_session
     $ sudo add-apt-repository ppa:graphics-drivers/ppa
     ```
     This will add the graphics drivers repository to ubuntu. you can browse for more information here: https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa
     
   - Next,
-    ```
+    ```shell_session
     $ sudo apt-get update
     $ ubuntu-drivers list
     ```
     This will list all the available drivers, and you can choose which one you would like to install.
-    ```
+    ```shell_session
     $ ubuntu-drivers list
     nvidia-driver-396
     nvidia-driver-418
@@ -34,15 +34,15 @@ $ lspci | grep -i nvidia
     nvidia-driver-415
     ```
   - I am choosing driver-410, to install the driver type,
-    ```
+    ```shell_session
     $ sudo apt install nvidia-driver-410
     ```
   - After installation completely successfully, reboot the PC,
-    ```
+    ```shell_session
     $ sudo reboot
     ```
   - Now type nvidia-smi to find out the installed drivers and the hardware, you can use this command (watch nvidia-smi) to monitor the Graphics card later.
-    ```
+    ```shell_session
     $ nvidia-smi
     +-----------------------------------------------------------------------------+
     | NVIDIA-SMI 410.104       Driver Version: 410.104       CUDA Version: 10.0   |
@@ -62,7 +62,7 @@ $ lspci | grep -i nvidia
   - Go to nVidia cuda archive https://developer.nvidia.com/cuda-10.0-download-archive?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1804&target_type=debnetwork and download the installer type: Network
   - link to the installer : https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb
   - Then use the following commands inside the folder where you have downloaded the installer,
-  ```
+  ```shell_session
   $ sudo dpkg -i cuda-repo-ubuntu1804_10.0.130-1_amd64.deb
   $ sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
   $ sudo apt-get update
@@ -72,11 +72,11 @@ $ lspci | grep -i nvidia
  
 ### Step 2 (Adding PATH):
   - After the installation we have to set the path for the Graphics card to locate the CUDA libraries. open,
-  ```
+  ```shell_session
   $ sudo nano ~/.bashrc
   ```
   - Enter the following and save the bashrc to set the PATH variables.
-  ```
+  ```shell_session
   export PATH=/usr/local/cuda-10.0/bin${PATH:+:$PATH}}
   export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
   ```
@@ -88,11 +88,11 @@ $ lspci | grep -i nvidia
   - After logging in download cuDNN v7.5.0 for CUDA 10.0, Get the Linux tar package.
     https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.5.0.56/prod/10.0_20190219/cudnn-10.0-linux-x64-v7.5.0.56.tgz
   - Go to the folder where the archive got downloaded, in the terminal,
-  ```
+  ```shell_session
   $ tar -xzvf cudnn-10.0-linux-x64-v7.5.0.56.tgz
   ```
   - Then type the following to move the libraries to the appropriate folders,
-  ```
+  ```shell_session
   $ sudo cp cuda/include/cudnn.h /usr/local/cuda/include
   $ sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
   $ sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
@@ -104,18 +104,18 @@ $ lspci | grep -i nvidia
 
 ### Step 1 (Installing pip3):
   - Use the following commend to install pip3 in your PC,
-  ```
+  ```shell_session
   $ sudo apt-get install python3-pip
   ```
   
 ### Step 2 (Installing Tensorflow):
   - Today the Tensorflow-2.0 is only available in BETA stage, I will try to update the stable version once it is ready, but for now use the following command to install,
-  ```
+  ```shell_session
   $ pip3 install tensorflow-gpu==2.0.0-beta1
   ```
 ### Step 3 (Verifying the installation):
   - Run the following inside python3 terminal to verify the installation
-  ```
+  ```shell_session
   $ python3
   >>> import tensorflow as tf
   >>> hello = tf.constant('hello tensorflow')
