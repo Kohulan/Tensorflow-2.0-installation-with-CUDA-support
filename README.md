@@ -85,11 +85,11 @@ $ lspci | grep -i nvidia
 
   - Download the cuDNN from https://developer.nvidia.com/rdp/cudnn-archive
   - You should have a membership account to download the cuDNN libraries.
-  - After logging in download cuDNN v7.5.0 for CUDA 10.0, Get the Linux tar package.
-    https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.5.0.56/prod/10.0_20190219/cudnn-10.0-linux-x64-v7.5.0.56.tgz
+  - After logging in download cuDNN v7.6.0 for CUDA 10.0, Get the Linux tar package.
+    https://developer.nvidia.com/compute/machine-learning/cudnn/secure/7.6.4.38/Production/10.0_20190923/cudnn-10.0-linux-x64-v7.6.4.38.tgz
   - Go to the folder where the archive got downloaded, in the terminal,
   ```shell_session
-  $ tar -xzvf cudnn-10.0-linux-x64-v7.5.0.56.tgz
+  $ tar -xzvf cudnn-10.0-linux-x64-v7.6.4.38.tgz
   ```
   - Then type the following to move the libraries to the appropriate folders,
   ```shell_session
@@ -106,12 +106,13 @@ $ lspci | grep -i nvidia
   - Use the following commend to install pip3 in your PC,
   ```shell_session
   $ sudo apt-get install python3-pip
+  $ sudo pip3 --upgrade pip
   ```
   
 ### Step 2 (Installing Tensorflow):
-  - Today the Tensorflow-2.0 is only available in BETA stage, I will try to update the stable version once it is ready, but for now use the following command to install,
+  - Now let's install Tensorflow 2.0
   ```shell_session
-  $ pip3 install tensorflow-gpu==2.0.0-beta1
+  $ pip3 install tensorflow-gpu==2.0.0
   ```
 ### Step 3 (Verifying the installation):
   - Run the following inside python3 terminal to verify the installation
