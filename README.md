@@ -48,7 +48,7 @@ nvidia-smi
 |                               |                      |                  N/A |
 +-------------------------------+----------------------+----------------------+
 ```
-## Installing pip3 and Tensorflow-2.0-GPU
+## Installing pip3 and Tensorflow-2.x-GPU
 
   - The support for python v2.7 ended officially in 2020, So it's better if we can stick with python version 3.6
 
