@@ -3,20 +3,20 @@
 Installing Nvidia Drivers, Installing CUDA drivers with cuDNN on a Ubuntu machine is not straightforward. Where many tutorials give a detail step-by-step guide to install Tensorflow-1.0, There is no proper tutorial which explains the steps a beginner should take when installing Tensorflow-2.0. This is a more elaborative guide on installing All the necessary drivers and kick off your first machine learning algorithm.
 
 ## First, remove all previous CUDA and NVIDIA installation.
-```shell_session
+```shell
 sudo apt-get --purge remove "*cublas*" "cuda*" "nsight*" "*nvidia*"
 sudo nano /etc/apt/sources.list #comment nvidia dev 
 sudo apt --fix-broken install
 ```
 ## Second, add NVIDIA package repositories: 
-```shell_session
+```shell
 wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin 
 sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600 
 sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub
 ```
 You might need to check the https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ link to check for the latest keys pub file and modify the previous line.
 
-```shell_session
+```shell
 sudo add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /" 
 sudo apt-get update 
 wget http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb 
@@ -28,12 +28,12 @@ sudo apt-get update
 ```
 
 ## Third, install development and runtime libraries (~4GB)
-```shell_session
+```shell
 sudo apt-get install --no-install-recommends cuda-11-3 libcudnn8=8.2.1.32-1+cuda11.3 libcudnn8-dev=8.2.1.32-1+cuda11.3 #cuda-runtime-11-3 cuda-demo-suite-11-3 cuda-drivers-510 nvidia-driver-510 libnvidia-extra-510
 sudo apt-get update 
 ```
 ## Finally, reboot the PC and check the installation
-```shell_session
+```shell
 sudo reboot
 nvidia-smi
 +-----------------------------------------------------------------------------+
@@ -54,20 +54,22 @@ nvidia-smi
 
 ### Step 1 (Installing pip3):
   - Use the following commend to install pip3 in your PC,
-  ```shell_session
+  ```shell
   $ sudo apt-get install python3-pip
   $ sudo pip3 --upgrade pip
   ```
   
 ### Step 2 (Installing Tensorflow):
   - Now let's install Tensorflow 2.x
-  ```shell_session
+  ```shell
   $ pip3 install tensorflow-gpu==2.x.0
   ```
 ### Step 3 (Verifying the installation):
   - Run the following inside python3 terminal to verify the installation
-  ```shell_session
+  ```shell
   $ python3
+  ```
+  ```python
   >>> import tensorflow as tf
   >>> hello = tf.constant('hello tensorflow')
   >>> x = [[2.]]
